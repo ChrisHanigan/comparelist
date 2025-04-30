@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Items</title>
+</head>
+<body>
+	<h1>Compare Items</h1>
+	<p>Which do you prefer?</p>
+    <p>Which do you prefer?</p>
+
+    <!-- Form to submit the comparison result -->
+    <form method="post" action="{{ url_for('record_comparison') }}">
+        <!-- Hidden fields to send the IDs of the items being compared -->
+        <input type="hidden" name="item1_id" value="{{ item1.id }}">
+        <input type="hidden" name="item2_id" value="{{ item2.id }}">
+
+        <div class="comparison-container">
+            <!-- Option 1 -->
+            <div class="item-option">
+                <h2>{{ item1.name }}</h2>
+                <!-- This button submits the form with preference=1 -->
+                <button type="submit" name="preference" value="1">Choose this</button>
+            </div>
+
+            <strong>OR</strong>
+
+            <!-- Option 2 -->
+            <div class="item-option">
+                <h2>{{ item2.name }}</h2>
+                <!-- This button submits the form with preference=-1 -->
+                <button type="submit" name="preference" value="-1">Choose this</button>
+            </div>
+        </div>
+
+        <!-- Optional: Button for a tie -->
+        <!-- This button submits the form with preference=0 -->
+        <!-- Remove this if you don't want a tie option -->
+        <button type="submit" name="preference" value="0" class="tie-button">It's a Tie / No Preference</button>
+
+    </form>
+
+    <p>
+        <a href="{{ url_for('index') }}">Back to Rankings</a>
+	</h2>
+</body>

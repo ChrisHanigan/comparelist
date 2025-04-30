@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item Ranking</title>
+</head>
+<body>
+    <h1>Ranked Items</h1>
+    <ol>
+        {% for item in items %}
+        <li>{{ item['name'] }} (Rank: {{ item['rank'] }})</li>
+        {% endfor %}
+    </ol>
+
+    <h2>Add New Item</h2>
+    <form method="post" action="/">
+        <input type="text" name="item_name" placeholder="Enter item name">
+        <button type="submit">Add Item</button>
+    </form>
+    <p>
+        <a href="{{ url_for('compare_items') }}">Compare Items</a>
+    </p>
+
+    <!-- Add this link somewhere in templates/index.html, maybe near the 'Compare Items' link -->
+<p>
+    <a href="{{ url_for('view_database') }}">View Full Database</a>
+</p>
+
+</body>
+</html>

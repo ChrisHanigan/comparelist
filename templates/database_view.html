@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Contents</title>
+    <style>
+        /* Optional: Basic styling for tables */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .container {
+             padding: 20px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Database Contents</h1>
+
+        <h2>Items Table</h2>
+        {% if items %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item['id'] }}</td>
+                        <td>{{ item['name'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align: center;">No items found in the database.</p>
+        {% endif %}
+
+        <hr> <!-- Separator -->
+
+        <h2>Comparisons Table</h2>
+        {% if comparisons %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item 1 ID</th>
+                        <th>Item 2 ID</th>
+                        <th>Score (1=Item1 wins, -1=Item2 wins, 0=Tie)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comp in comparisons %}
+                    <tr>
+                        <td>{{ comp['item1_id'] }}</td>
+                        <td>{{ comp['item2_id'] }}</td>
+                        <td>{{ comp['score'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align: center;">No comparisons found in the database.</p>
+        {% endif %}
+
+        <p class="back-link">
+            <a href="{{ url_for('index') }}">Back to Rankings</a>
+        </p>
+    </div>
+</body>
+</html>

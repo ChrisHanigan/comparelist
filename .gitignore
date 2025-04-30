@@ -1,0 +1,37 @@
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE / Editor specific files
+.vscode/
+# If you WANT to share launch/settings, uncomment below and comment above
+# .vscode/*
+# !.vscode/launch.json
+# !.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Instance folder (if used by Flask for config/db)
+instance/
+
+# OS generated files
+.DS_Store
+Thumbs.db
