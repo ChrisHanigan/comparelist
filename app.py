@@ -5,7 +5,7 @@ from flask import Flask, request, render_template, url_for, redirect, g
 
 app = Flask(__name__)
 
-# Determine database based on environment variable
+# Select database based on environment variable (testing of production)|
 if os.environ.get('TESTING') == 'True':
     DATABASE = 'test_items.db'
     app.config['DATABASE'] = DATABASE # Also set in app.config for consistency if needed elsewhere
@@ -13,8 +13,10 @@ else:
     DATABASE = 'items.db'
     app.config['DATABASE'] = DATABASE
 
-app.config['DATABASE_PATH'] = os.path.join(os.path.dirname(__file__), DATABASE) # Store full path
+# Store full path
+app.config['DATABASE_PATH'] = os.path.join(os.path.dirname(__file__), DATABASE) 
 
+#Connect database
 def get_db_connection():
     """Gets a database connection. The connection is associated with the application context."""
     if 'db' not in g:
